@@ -32,6 +32,7 @@
 #include "error.hpp"
 #include "convert.hpp"
 #include "unused.h"
+#include "enforce.hpp"
 
 // + standard includes
 #include <iostream>
@@ -1159,7 +1160,7 @@ namespace Exiv2 {
                    time_.hour, time_.minute, time_.second,
                    plusMinus, abs(time_.tzHour), abs(time_.tzMinute));
 
-        assert(wrote == 11);
+        enforce(wrote == 11, Exiv2::kerErrorMessage, "error message");
         std::memcpy(buf, temp, wrote+1);
         return wrote;
     }
